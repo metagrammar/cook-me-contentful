@@ -1,0 +1,29 @@
+.highlight {
+    grid-column: 2/3;
+    height: 500px;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.highlight_carouselitem {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f2c816;
+}
+
+
+.highlight_carouselitem img {
+    width: 70%;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.highlight_carouselitem_card {
+    text-align: center;
+    width: 30%;
+}
+
+.Carousel-indicators-2 {
+    margin-top: -30px !important;
+}
