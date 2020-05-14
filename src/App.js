@@ -1,13 +1,14 @@
 import React from 'react';
-import ResultsMain from './components/ResultsMain'
-import Footer from './components/Footer'
+import Navigation from './components/navigation'
+import Highlight from './components/highlight'
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
-     <ResultsMain />
-     <Footer />
+    <Navigation />
+    <Highlight />
     </div>
   );
 }
