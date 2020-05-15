@@ -9,6 +9,7 @@
     align-items: center;
     left: 50%;
     transform: translate(-570px, 0px);
+    z-index: 1;
 }
 
 .navbar_cat_title {
