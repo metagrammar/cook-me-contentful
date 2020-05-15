@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
 import Navigation from './components/navigation'
 import Highlight from './components/highlight'
 import ResultsMain from './components/ResultsMain';
@@ -8,17 +7,16 @@ import Footer from './components/Footer';
 import './App.css';
 
 
-function App() {
+function Home() {
   return (
     <div className="App">
-      
-      <Navigation />
-      <Highlight />
-      <ResultsMain />
-      <ResultsMore />
-      <Footer />
+        <Navigation />
+        <Highlight />
+        <ResultsMain />
+        <ResultsMore />
+        <Footer />
     </div>
   );
 }
 
-export default App;
+export default Home;
