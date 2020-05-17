@@ -1,7 +1,7 @@
 .footer {
     grid-column: 1 / span 3 ;
     grid-template-columns: repeat(3, 1fr);
-    background: red;
+    background: #333;
     
 }
 
@@ -12,20 +12,47 @@
     margin: 0 auto;
     max-width:1140px;
     height:300px;
-    background: #333;
+    
 }
 
 .about{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height:250px;
-    
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    min-height:250px;
+    align-items: start;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+.about a {
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+}
+
+.about a:hover {
+    color: rgba(255,255,255,0.5);
+}
+
+.follow, .contact, .news {
+    padding: 2em 2em 0;
+
+}
+
+.follow h3, .contact h3, .news h3 {
+    font-size: 1.25rem;
+}
+
+.contact {
+    padding: 2em 1em 0;
+}
+
+.news{
+    padding: 2em 1em 0;
 }
 
 .terms-condition {
     display: flex;
     justify-content: center;
-    align-items: center;
     height:50px;
 }
 
