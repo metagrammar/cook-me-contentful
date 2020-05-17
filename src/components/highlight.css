@@ -1,7 +1,7 @@
 .highlight {
     grid-column: 2/3;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .highlight_carouselitem {
@@ -11,10 +11,33 @@
     background-color: #f2c816;
 }
 
+.highlight_carouselitem h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 1.25;
+    letter-spacing: 0.1rem;
+}
+
+.highlight_carouselitem h4 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.75rem;
+    color: #333;
+}
+
+.highlight_carouselitem h5 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.9);
+}
 
 .highlight_carouselitem img {
     width: 70%;
-    max-height: 350px;
+    max-height: 450px;
     overflow: hidden;
 }
 
