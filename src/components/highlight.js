@@ -9,7 +9,7 @@ function Highlight() {
     return (
       <>  
         <div className="highlight">
-            <Carousel autoplay>
+            <Carousel >
                 <div className="highlight_carouselitem">
                     <img src="https://www.oetker.de/Recipe/Recipes/oetker.de/de-de/baking/image-thumb__69122__RecipeDetail/kuchen-a-la-milchschnitter.jpg" alt="hightlight1"></img>
                     <div className="highlight_carouselitem_card">
