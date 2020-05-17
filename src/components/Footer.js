@@ -17,7 +17,7 @@ const Footer = () => {
         <>
             <div className='footer'>
                 <div className='footer-center'>
-                    <div class='about'>
+                    <div className='about'>
                         <div className='follow'>
                         <h3>Follow Cook Me</h3>
                         </div>
@@ -32,7 +32,7 @@ const Footer = () => {
                         <p>Get the newsletter.</p>
                         </div>
                     </div>
-                    <div class='terms-condition'>
+                    <div className='terms-condition'>
                         <ButtonBase className={classes.termsButtons}>Terms &amp; Conditions</ButtonBase>
                         <ButtonBase className={classes.termsButtons}>Legal</ButtonBase>
                         <ButtonBase className={classes.termsButtons}>Privacy Policy</ButtonBase>
