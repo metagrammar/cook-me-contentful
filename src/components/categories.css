@@ -1,13 +1,10 @@
 .categories {
     position: absolute;
-    top: 100px;
-    right: 30%;
-    background-color: white;
-    height: auto;
-    width: 40%;
     display: grid;
-    grid-template-columns: (3,auto);
-    grid-template-rows: auto;
-    justify-content: space-between;
-    z-index: 99;
+    grid-column: 1 / span 3;
+    grid-template-columns:1fr minmax(280px, 1000px) 1fr;
+    margin: 0 auto;
+    width:100%;
+    background-color: #fff;
+    z-index: 1;
 }
