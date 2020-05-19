@@ -2,12 +2,20 @@ import React from 'react';
 import './steps.css';
 
 
-function Steps() {
+function Steps({recipeData}) {
     return (
         <div className="steps" id="steps">
-            <h1>Step1</h1>
-            <p>lorem jkljdskfjdlf</p>
-            <img src="https://www.oetker.de/Recipe/Recipes/oetker.de/de-de/baking/image-thumb__69122__RecipeDetail/kuchen-a-la-milchschnitter.jpg" alt="hightlight1"></img>
+        {console.log(recipeData)}
+        {recipeData.map( step => {
+            return (
+            <div>
+            <p>{step[0]}</p>
+            {step[1] === "no image"? "": <img src={step[1]} alt="delicous"></img>}
+            </div> )
+        }
+        )}
+            
+
         </div>
     );
   }
