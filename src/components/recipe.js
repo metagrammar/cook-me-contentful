@@ -10,9 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Steps from './steps';
 
-
-
-
 const contentful = require('contentful');
 
 const client = contentful.createClient({
@@ -28,7 +25,8 @@ const StyledTableCell = withStyles((theme) => ({
       color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14,
+      fontSize: '1rem',
+      fontFamily: 'Montserrat, sans-serfi'
     },
   }))(TableCell);
   
@@ -50,20 +48,18 @@ const StyledTableCell = withStyles((theme) => ({
           .catch(console.error)}
         ,[recipeId])
 
-
     return (
-
       !recipeData?"":
         <div className="recipe" id="recipe">
-          <img src={recipeData.recipeHeroImage.fields.file.url} alt="hightlight1"></img>
+          <img src={recipeData.recipeHeroImage.fields.file.url} alt={recipeData.recipeTitle} className='hero-image' />
           <h1>{recipeData.recipeTitle}</h1>
             <h3>{recipeData.recipeDescription}</h3>
-            <TableContainer component={Paper}>
+            <TableContainer className='table' component={Paper}>
                 <Table aria-label="customized table">
                   <TableHead>
                     <TableRow>
-                      <StyledTableCell align="left">Amount</StyledTableCell>
-                      <StyledTableCell align="left">Ingridient</StyledTableCell>
+                      <StyledTableCell className='table-header' align="left">Amount</StyledTableCell>
+                      <StyledTableCell className='table-header'  align="left">Ingredient</StyledTableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
