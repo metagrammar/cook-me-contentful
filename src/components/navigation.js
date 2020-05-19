@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Categories from './categories'
-import { ClickAwayListener } from '@material-ui/core';
+import { ClickAwayListener, Link } from '@material-ui/core';
 import './navigation.css';
 
 
@@ -23,7 +23,9 @@ function Navigation() {
       <ClickAwayListener onClickAway={clickAway}>
         <div className='navbar-contain'>
         <div className="navbar">
-          <h1 className="navbar_cat_title"><strong>Secret</strong> Sauce</h1>
+          <Link to='/' style={{textDecoration: 'none'}}>
+            <h1 className="navbar_cat_title"><strong>Secret</strong> Sauce</h1>
+          </Link>
           <button className="navbar_cat_title" id="category_button" onClick={toggleCategories}>Categories</button>
           <div className="navbar_search">
             <input className="navbar_search" type="text" placeholder="Search for recipe.." id="search"></input>

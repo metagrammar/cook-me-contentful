@@ -11,7 +11,7 @@ function Home(props) {
   console.log(props.gotRecipes)
   return (
     <div className="App">
-        <Highlight />
+        <Highlight gotRecipes={props.gotRecipes}/>
         <ResultsMain gotRecipes={props.gotRecipes}/>
         <ResultsMore />
         <Footer />
