@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import { ButtonBase, Link } from '@material-ui/core';
+import { Facebook, Instagram, Twitter } from '@material-ui/icons';
 import './Footer.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -9,10 +10,14 @@ const useStyles = makeStyles((theme) => ({
       disableTouchRipple: true,
       fontSize: '1rem'
     },
+    linkButtons: {
+        marginRight: '1em',
+    }
   }));
 
 const Footer = () => {
     const classes = useStyles();
+    const preventDefault = (event) => event.preventDefault();
     return (
         <>
             <div className='footer'>
@@ -20,6 +25,9 @@ const Footer = () => {
                     <div className='about'>
                         <div className='follow'>
                         <h3>Follow Cook Me</h3>
+                        <Link href="#" onClick={preventDefault} className={classes.linkButtons}><Facebook /></Link>
+                        <Link href="#" onClick={preventDefault} className={classes.linkButtons}><Instagram /></Link>
+                        <Link href="#" onClick={preventDefault}><Twitter /></Link>
                         </div>
                         <div className='contact'>
                             <h3>Contact Cook Me</h3>
@@ -30,6 +38,10 @@ const Footer = () => {
                         <div className='news'>
                         <h3>Cook Me has something to say</h3>
                         <p>Get the newsletter.</p>
+                        <div className="email-input">
+                            <input className="navbar_search" type="text" placeholder="your-email@example.com" id="search"></input>
+                            <button className="navbar_search">OK</button>
+                        </div>
                         </div>
                     </div>
                     <div className='terms-condition'>

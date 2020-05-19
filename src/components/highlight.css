@@ -2,16 +2,21 @@
     grid-column: 2/3;
     width: 100%;
     margin-top: 80px;
+    box-sizing: border-box;
 }
 
-.highlight_carouselitem {
-    display: flex !important;
-    flex-direction: row;
+.carouselitem {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-rows: 1fr;
     align-items: center;
-    background-color: #f2c816;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.highlight_carouselitem h1 {
+.carouselitem h1 {
     font-family: "Merriweather", serif;
     font-weight: 500;
     font-size: 45px;
@@ -19,7 +24,7 @@
     letter-spacing: 0.1rem;
 }
 
-.highlight_carouselitem h4 {
+.carouselitem h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -27,7 +32,7 @@
     color: #333;
 }
 
-.highlight_carouselitem h5 {
+.carouselitem h5 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -35,17 +40,35 @@
     color: rgba(255,255,255,0.9);
 }
 
-.highlight_carouselitem img {
-    width: 70%;
-    max-height: 450px;
-    overflow: hidden;
+.img-conatin {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 280px;
+    height:400px;
+    overflow:hidden;
 }
 
-.highlight_carouselitem_card {
+.img-conatin img{
+    width: auto;
+    min-height: 400px;
+    
+}
+
+.carouselitem-card {
     text-align: center;
-    width: 30%;
-}
-
-.Carousel-indicators-2 {
-    margin-top: -30px !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    width: auto;
+    height:400px;
+    background-color: #f2c816;
+    box-sizing: border-box;
+    min-width: 280px;
 }
