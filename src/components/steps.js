@@ -5,7 +5,6 @@ import './steps.css';
 function Steps({recipeData}) {
     return (
         <div className="steps" id="steps">
-        {console.log(recipeData)}
         {recipeData.map( step => {
             return (
             <div>
