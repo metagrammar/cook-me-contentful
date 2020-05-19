@@ -17,7 +17,7 @@ const ResultsMain = (props) => {
                     recipe.sys.contentType.sys.id === 'recipe'? 
                     <Link
                         style={{textDecoration: 'none'}}
-                        onClick={() => history.push(`/${recipe.fields.recipeTitle}`)} 
+                        onClick={() => history.push(`/${recipe.sys.id}`)} 
                         key={recipe.sys.id}
                         >
                     <div className='main-card'>
