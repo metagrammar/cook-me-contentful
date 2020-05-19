@@ -2,7 +2,7 @@
     grid-column: 1 / span 3 ;
     grid-template-columns: repeat(3, 1fr);
     background: #333;
-    
+    margin-top: 5em;
 }
 
 .footer-center {
