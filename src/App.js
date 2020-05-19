@@ -30,7 +30,6 @@ function App() {
     client.getEntries('recipe')
     .then(response => setRecipes(response.items))
     .catch(console.error)
-    console.log(recipes)
   },[])
 
 

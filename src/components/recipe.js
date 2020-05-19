@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './recipe.css';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,7 +9,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Steps from './steps';
-// import Results from './results';
+
+
+
+
+const contentful = require('contentful');
+
+const client = contentful.createClient({
+  space: 'on7xb2olivy7',
+  environment: 'master', // defaults to 'master' if not set
+  accessToken: process.env.REACT_APP_SECRET_SAUCE_DELIVERY_API_TOKEN
+})
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -29,63 +40,43 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableRow);
   
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
   
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
-  
-  const useStyles = makeStyles({
-    table: {
-      minWidth: 700,
-    },
-  });
-  
+ function Recipe() {
+        const [recipeData, setRecipeData] = useState()
 
-function Recipe() {
-    const classes = useStyles();
+        useEffect( ()=>{
+        client.getEntry('2YCK9IM7zRtlD21WQc8mXc')
+          .then((entry) => setRecipeData(entry.fields))
+          .catch(console.error)}
+        ,[])
 
 
     return (
+
+      !recipeData?"":
         <div className="recipe" id="recipe">
-            <img src="https://www.oetker.de/Recipe/Recipes/oetker.de/de-de/baking/image-thumb__69122__RecipeDetail/kuchen-a-la-milchschnitter.jpg" alt="hightlight1"></img>
-          <h1>Recipe title</h1>
-            <h3>Recipe introduction</h3>
+          <img src={recipeData.recipeHeroImage.fields.file.url} alt="hightlight1"></img>
+          <h1>{recipeData.recipeTitle}</h1>
+            <h3>{recipeData.recipeDescription}</h3>
             <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="customized table">
-                    <TableHead>
-                     <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {rows.map((row) => (
-                        <StyledTableRow key={row.name}>
-                        <StyledTableCell component="th" scope="row">
-                            {row.name}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-                </TableContainer>
-                <Steps />
-                <h2>Other recipes you might like...</h2>
-                {/* <Results /> */}
+                <Table aria-label="customized table">
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell align="left">Amount</StyledTableCell>
+                      <StyledTableCell align="left">Ingridient</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {recipeData.recipeIngridientsJson.Ingridient_table.map((row) => (
+                    <StyledTableRow key={row[0]+row[1]}>
+                      <StyledTableCell align="left" width="20%">{row[0]}</StyledTableCell>
+                      <StyledTableCell align="left">{row[1]}</StyledTableCell>
+                    </StyledTableRow>))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <Steps recipeData={recipeData.recipeSteps.recipe_steps} />
+            <h2>Other recipes you might like...</h2>
         </div>
     );
   }
