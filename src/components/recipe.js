@@ -76,7 +76,6 @@ const StyledTableCell = withStyles((theme) => ({
               </Table>
             </TableContainer>
             <Steps recipeData={recipeData.recipeSteps.recipe_steps} />
-            <h2>Other recipes you might like...</h2>
         </div>
     );
   }
