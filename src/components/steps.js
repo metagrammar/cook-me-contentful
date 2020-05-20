@@ -11,7 +11,7 @@ function Steps({recipeData}) {
             {recipeData.map( step => {
                 return (
                 <div className="steps">
-                    <div className='steps-text'>
+                    <div className='steps-text' key={Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)}>
                         <h4>Step {i+=1}</h4>
                         <p>{step[0]}</p>
                     </div>

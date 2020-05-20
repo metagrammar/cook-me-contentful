@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { CardMedia } from '@material-ui/core';
 import './ResultsMain.css';
-// import Recipe from './recipe';
 
 const ResultsMain = (props) => {
 
@@ -16,8 +15,9 @@ const ResultsMain = (props) => {
                 {props.gotRecipes.map(recipe =>  
                     recipe.sys.contentType.sys.id === 'recipe'? 
                     <Link
+                        to= ' '
                         style={{textDecoration: 'none'}}
-                        onClick={() => history.push(`/${recipe.sys.id}`)} 
+                        onClick={(e) =>{ history.push(`/${recipe.sys.id}`); e.preventDefault()}} 
                         key={recipe.sys.id}
                         >
                     <CardMedia className='main-card' image={recipe.fields.recipeHeroImage.fields.file.url} />
