@@ -52,8 +52,6 @@ function App() {
     .then(response => setCategories(response.items))
     .catch(console.error)
   },[])
-
-
   
   return (
     <div>
