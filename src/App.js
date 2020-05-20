@@ -11,9 +11,8 @@ import Footer from './components/Footer'; */
 //dotenv.config()
 
 
-
+// API SETUP INFORMATION
 const contentful = require('contentful')
-
 const client = contentful.createClient({
   space: 'on7xb2olivy7',
   environment: 'master', // defaults to 'master' if not set
@@ -22,13 +21,35 @@ const client = contentful.createClient({
 
 
 function App() {
-
+  // const [searchToggle, setSearchToggle] = useState(0)
+  // const [searchQuerry, setSearchQuerry] = useState()
   const [recipes, setRecipes] = useState()
+  const [categories, setCategories] = useState()
+
+//HELPER FUNCTIONS
+  const searchHandler = (e) => {
+        e.preventDefault()
+        console.log("search triggered")
+        client.getEntries({
+          'query': `${e.currentTarget[0].value}`})
+        .then((response) => console.log(response))
+        .catch(console.error)
+      }
+  
+
   
 
   useEffect( () => {
-    client.getEntries('recipe')
+    client.getEntries({
+      content_type: 'recipe',
+    })
     .then(response => setRecipes(response.items))
+    .catch(console.error)
+
+    client.getEntries({
+      content_type: 'categories',
+    })
+    .then(response => setCategories(response.items))
     .catch(console.error)
   },[])
 
@@ -36,11 +57,11 @@ function App() {
   
   return (
     <div>
-      <Navigation />
+      <Navigation onSearch={searchHandler}/>
       {!recipes? '': 
       <Switch>
         <Route path='/:recipe/' render={props => <RecipePage  {...props} />} />
-        <Route exact path='/' render={props => <Home gotRecipes={recipes} {...props} />} />
+        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} {...props} />} />
       </Switch>
       }
     </div>

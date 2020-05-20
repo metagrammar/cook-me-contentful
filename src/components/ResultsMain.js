@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import './ResultsMain.css';
-// import Recipe from './recipe';
 
 const ResultsMain = (props) => {
 
@@ -16,13 +15,13 @@ const ResultsMain = (props) => {
                 {props.gotRecipes.map(recipe =>  
                     recipe.sys.contentType.sys.id === 'recipe'? 
                     <Link
+                        to= ' '
                         style={{textDecoration: 'none'}}
-                        onClick={() => history.push(`/${recipe.sys.id}`)} 
+                        onClick={(e) =>{ history.push(`/${recipe.sys.id}`); e.preventDefault()}} 
                         key={recipe.sys.id}
                         >
                     <div className='main-card'>
                         <img src={recipe.fields.recipeHeroImage.fields.file.url} alt={recipe.fields.recipeTitle} />
-                        {/* <h1> {recipe.fields.recipeHeroImage.fields.file.url} </h1> */}
                     </div>
                     <h3 className='recipe-card-title'>{recipe.fields.recipeTitle}</h3>
                      </Link>

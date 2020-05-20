@@ -7,8 +7,6 @@ import './App.css';
 
 
 function Home(props) {
-  console.log('Home recipes data')
-  console.log(props.gotRecipes)
   return (
     <div className="App">
         <Highlight gotRecipes={props.gotRecipes}/>
