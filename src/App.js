@@ -58,7 +58,7 @@ function App() {
       <Navigation onSearch={searchHandler}/>
       {!recipes? '': 
       <Switch>
-        <Route path='/:recipe/' render={props => <RecipePage  {...props} />} />
+        <Route path='/:recipe/' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
         <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} {...props} />} />
       </Switch>
       }
