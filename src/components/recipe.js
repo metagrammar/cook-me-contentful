@@ -41,7 +41,7 @@ const StyledTableCell = withStyles((theme) => ({
   }))(TableRow);
   
   
- function Recipe({ recipeId }) {
+ function Recipe({ recipeSlug }) {
         const [recipeData, setRecipeData] = useState()
 
         useEffect( ()=>{
@@ -49,11 +49,11 @@ const StyledTableCell = withStyles((theme) => ({
           // .then((entry) => setRecipeData(entry.fields))
           client.getEntries({
             content_type: 'recipe',
-            'fields.slug': 'curried-pork-meatballs-with-rice'
+            'fields.slug': `${recipeSlug}`
           })
-          .then((entry) => console.log(entry))
+          .then((entry) => setRecipeData(entry.items[0].fields))
           .catch(console.error)}
-        ,[recipeId])
+        ,[recipeSlug])
 
     return (
       !recipeData?"":
