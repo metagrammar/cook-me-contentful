@@ -11,37 +11,35 @@ function Highlight({ gotRecipes }) {
 
     const history = useHistory();
 
-    console.log({gotRecipesFromCarousel: gotRecipes})
+  
     return (
       <>  
         <div className="highlight">
-            <Carousel autoPlay={false}>
+            <Carousel autoPlay={true} indicators={false} interval={4500} timeout={500}>
                 
-                    {gotRecipes.map(recipe =>  
-                        recipe.sys.contentType.sys.id === 'recipe'? 
-                        
+                    {gotRecipes.slice(0,4).map(recipe => {
+                      if (recipe.sys.contentType.sys.id === 'recipe') {
+                        return (                        
                         <Link
                             to=' '
                             style={{textDecoration: 'none'}}
-                            onClick={() => history.push(`/${recipe.fields.slug}`)} 
+                            onClick={(e) => {history.push(`/${recipe.fields.slug}`);e.preventDefault()}} 
                             key={recipe.sys.id}
                             >
                             <div className="carouselitem">
-                                
-                                <CardMedia 
+                              <CardMedia 
                                 image={recipe.fields.recipeHeroImage.fields.file.url}
                                 className="img-conatin" />
                         
                                 <div className="carouselitem-card">
-                                    <h4>Category</h4>
+                                    <h2>Best of {recipe.fields.categories[0].fields.categoryTitle}</h2>
                                     <h1>{recipe.fields.recipeTitle}</h1>
-                                    <h5>Tags, Tags, Tags</h5>
                                 </div>
                             </div>  
                         </Link>
-
-                        : ''
-                        )}                 
+                        )}
+                        }
+                      )}                 
             </Carousel>
             {document.getElementById('container')}
         </div>
