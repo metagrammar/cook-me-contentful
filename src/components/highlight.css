@@ -33,11 +33,11 @@
     color: #333;
 }
 
-.carouselitem h5 {
+.carouselitem h2 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     color: rgba(255,255,255,0.9);
 }
 
