@@ -12,7 +12,7 @@ function RecipePage() {
 
   return (
     <div className="App">
-        <Recipe recipeId={recipe} />
+        <Recipe recipeSlug={recipe} />
         <ResultsMore />
         <Footer />
     </div>
