@@ -17,7 +17,7 @@ const ResultsMain = (props) => {
                     recipe.sys.contentType.sys.id === 'recipe'? 
                     <Link
                         style={{textDecoration: 'none'}}
-                        onClick={() => history.push(`/${recipe.sys.id}`)} 
+                        onClick={(e) =>{ history.push(`/${recipe.sys.id}`); e.preventDefault()}}
                         key={recipe.sys.id}
                         >
                     <CardMedia className='main-card' image={recipe.fields.recipeHeroImage.fields.file.url} />
