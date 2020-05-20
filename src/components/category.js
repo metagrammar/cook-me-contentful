@@ -12,7 +12,9 @@ function Category() {
 const [catData, setCatData] = useState()
 const [mainCatData, setMainCatData] = useState()
 
-const [checkboxState, setCheckboxState] = useState(false)
+
+const [checkboxState, setCheckboxState] = useState()
+
 
 useEffect(()=>{
         client.getEntries({
@@ -27,6 +29,7 @@ useEffect(()=>{
       },[])
 
 
+
 const handleClick = (e) => {
       console.log(e.currentTarget)
       e.currentTarget.checked!=="checked"? e.currentTarget.checked="checked":e.currentTarget.checked=""
@@ -39,14 +42,17 @@ const handleClick = (e) => {
           mainCatData.map(mainCat => 
           <div>
             <h3>{mainCat.fields.title}</h3>
-            
+            <form >
+
             {catData !== undefined?catData.map(cat => {
                 if (cat.fields.parentCategory.fields.id === mainCat.fields.id){
                   return(
                     <label class='container'>
                       {cat.fields.categoryTitle}
+
                       <input type="checkbox"
                       />
+
                       <span class="checkmark"></span>
                     </label>
                   )
