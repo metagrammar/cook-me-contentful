@@ -43,7 +43,7 @@ const StyledTableCell = withStyles((theme) => ({
         const [recipeData, setRecipeData] = useState()
 
         useEffect( ()=>{
-        client.getEntry({recipeId})
+        client.getEntry(recipeId)
           .then((entry) => setRecipeData(entry.fields))
           .catch(console.error)}
         ,[recipeId])

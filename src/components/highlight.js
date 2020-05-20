@@ -32,7 +32,7 @@ function Highlight({ gotRecipes }) {
                                 className="img-conatin" />
                         
                                 <div className="carouselitem-card">
-                                    <h4>Category 1</h4>
+                                    <h4>Category</h4>
                                     <h1>{recipe.fields.recipeTitle}</h1>
                                     <h5>Tags, Tags, Tags</h5>
                                 </div>
@@ -40,8 +40,7 @@ function Highlight({ gotRecipes }) {
                         </Link>
 
                         : ''
-                        )}
-                              
+                        )}                 
             </Carousel>
             {document.getElementById('container')}
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import Categories from './categories'
-import { ClickAwayListener, Link } from '@material-ui/core';
+import { ClickAwayListener } from '@material-ui/core';
 import './navigation.css';
 
 

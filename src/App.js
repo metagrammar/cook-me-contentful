@@ -27,12 +27,10 @@ function App() {
   
 
   useEffect( () => {
-    client.getEntries('recipe')
+    client.getEntries({content_type: 'recipe'})
     .then(response => setRecipes(response.items))
     .catch(console.error)
   },[])
-
-
   
   return (
     <div>
