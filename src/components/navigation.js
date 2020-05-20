@@ -28,7 +28,7 @@ function Navigation({searchHandler}) {
             <h1 className="navbar_cat_title"><strong>Secret</strong> Sauce</h1>
           </Link>
           <button className="navbar_cat_title" id="category_button" onClick={toggleCategories}>Categories</button>
-          <div className="navbar_search">
+          <div className="navbar_search edge-margin">
             <form onSubmit={(e)=>{searchHandler(e); this.preventDefault()}}>
               <input className="navbar_search" type="text" placeholder="Search for recipe.."></input>
               <button className="navbar_search">OK</button>
