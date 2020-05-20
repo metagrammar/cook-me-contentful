@@ -21,6 +21,7 @@ function Highlight({ gotRecipes }) {
                         recipe.sys.contentType.sys.id === 'recipe'? 
                         
                         <Link
+                            to=' '
                             style={{textDecoration: 'none'}}
                             onClick={() => history.push(`/${recipe.fields.slug}`)} 
                             key={recipe.sys.id}
