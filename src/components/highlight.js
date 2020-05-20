@@ -22,7 +22,7 @@ function Highlight({ gotRecipes }) {
                         
                         <Link
                             style={{textDecoration: 'none'}}
-                            onClick={() => history.push(`/${recipe.sys.id}`)} 
+                            onClick={() => history.push(`/${recipe.fields.slug}`)} 
                             key={recipe.sys.id}
                             >
                             <div className="carouselitem">
