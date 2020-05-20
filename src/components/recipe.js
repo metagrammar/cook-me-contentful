@@ -28,7 +28,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
     body: {
       fontSize: '1rem',
-      fontFamily: 'Montserrat, sans-serfi'
+      fontFamily: 'Montserrat, sans-serif'
     },
   }))(TableCell);
   
