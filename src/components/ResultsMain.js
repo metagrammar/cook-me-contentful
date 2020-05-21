@@ -4,13 +4,14 @@ import { CardMedia } from '@material-ui/core';
 import './ResultsMain.css';
 
 const ResultsMain = (props) => {
-
     const history = useHistory();
+
+
 
     return (
         <>
         <div className='results-cards'>
-            <h1 className='main-results'>Latest Recipes</h1>
+            <h1 className='main-results'>{props.searchToggle===1?`Search: ${props.search}`:"Latest Recipes"}</h1>
             <div className='cards-wrap'>
                 {props.gotRecipes.map(recipe =>  
                     recipe.sys.contentType.sys.id === 'recipe'? 
