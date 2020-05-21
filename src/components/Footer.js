@@ -7,8 +7,9 @@ import './Footer.css';
 const useStyles = makeStyles((theme) => ({
     termsButtons: {
       fontFamily: 'Montserrat, sans-serif',
-      disableTouchRipple: true,
-      fontSize: '1rem'
+      disableTouchRipple: false,
+      fontSize: '1rem',
+      marginBottom: '1em',
     },
     linkButtons: {
         marginRight: '1em',
@@ -39,8 +40,10 @@ const Footer = () => {
                         <h3>Cook Me has something to say</h3>
                         <p>Get the newsletter.</p>
                         <div className="email-input">
-                            <input className="navbar_search" type="text" placeholder="your-email@example.com" id="search"></input>
-                            <button className="navbar_search">OK</button>
+                            <form name="newsletter" method="POST" data-netlify="true">
+                                <input className="newsletter-input" type="text" placeholder="your-email@example.com" id="search"></input>
+                                <button className="newsletter-button">OK</button>
+                            </form>
                         </div>
                         </div>
                     </div>
