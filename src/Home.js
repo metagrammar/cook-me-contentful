@@ -9,7 +9,7 @@ function Home(props) {
   return (
     <div className="App">
         <Highlight gotRecipes={props.gotRecipes}/>
-        <ResultsMain gotRecipes={props.gotRecipes}/>
+        <ResultsMain gotRecipes={props.gotRecipes} searchToggle={props.searchToggle} search={props.search}/>
         <Footer />
     </div>
   );

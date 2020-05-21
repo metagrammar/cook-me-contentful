@@ -34,7 +34,7 @@ const handleClick = (e) => {
 
     return (
       <div className='category'>
-      <form>
+      <form onSubmit={(e)=>console.log(e.target)}>
         {mainCatData !== undefined?
           mainCatData.map(mainCat => 
           <div>
