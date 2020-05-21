@@ -7,13 +7,17 @@
     background: #fff;
     display: grid;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    z-index: 2;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(280px, 1fr));
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-rows: 2fr;
     grid-column-gap: 1em;
     z-index: 1;
+    border-top: 1px solid #ececec;
+}
+
+.category-item {
+  margin-bottom: 2em;
+  align-self: start;
 }
 
 .category h3 {
@@ -35,7 +39,7 @@ ul li {
   }
 
   /* Styling for checkboxes*/
-/* The container */
+  /* The container */
 .container {
   display: block;
   position: relative;
@@ -53,15 +57,16 @@ ul li {
   margin-bottom: 0.5em;
 }
 /* Hide the browser's default checkbox */
-/* .container input {
+
 .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
+  display: none;
 }
-*/
+
 
 /* Create a custom checkbox */
 .checkmark {
@@ -80,7 +85,7 @@ ul li {
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #F2C817;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -106,6 +111,21 @@ ul li {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.filter {
+  display: flex;
+  /* grid-column: 1 / span 3; */
+  /* grid-row: 2 / 3; */
+  max-width:280px;
+  height: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.filter button {
+  height: 3em;
 }
   /*  #F2C817; */
 

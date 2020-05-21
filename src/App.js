@@ -18,7 +18,14 @@ function App() {
   const [search, setSearch] = useState()
   const [recipes, setRecipes] = useState()
   const [categories, setCategories] = useState()
-  const [catFilter, setCatFilter] = useState(["Vegan","Starter"])
+  const [catFilter, setCatFilter] = useState()
+
+  
+const filterHandler = (filter) => {
+  setCatFilter(filter)
+}
+  
+
 
 //HELPER FUNCTIONS
   const searchHandler = (searchquery) => {
@@ -50,7 +57,7 @@ function App() {
   
   return (
     <div>
-      <Navigation onSearch={searchHandler}/>
+      <Navigation onSearch={searchHandler} getFilter={filterHandler}/>
       {!recipes? '': 
       <Switch>
         <Route path='/:recipe/' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
