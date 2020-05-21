@@ -5,7 +5,7 @@ import { ClickAwayListener } from '@material-ui/core';
 import './navigation.css';
 
 
-function Navigation({ searchHandler,  getFilter }) {
+function Navigation({ onSearch,  getFilter }) {
     const [cat_toggler, setCat_toggler] = useState(false)
 
 
@@ -29,7 +29,7 @@ function Navigation({ searchHandler,  getFilter }) {
           </Link>
           <button className="navbar_cat_title" id="category_button" onClick={toggleCategories}>Categories</button>
           <div className="navbar_search edge-margin">
-            <form onSubmit={(e)=>{searchHandler(e.target[0].value);e.preventDefault()}}>
+            <form onSubmit={(e)=>{e.preventDefault(); onSearch(e.target[0].value)}}>
               <input className="navbar_search" type="text" placeholder="Search for recipe.."></input>
               <button className="navbar_search">OK</button>
             </form>
