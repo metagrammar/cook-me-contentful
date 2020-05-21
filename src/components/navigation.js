@@ -5,7 +5,7 @@ import { ClickAwayListener } from '@material-ui/core';
 import './navigation.css';
 
 
-function Navigation({searchHandler}) {
+function Navigation({ searchHandler,  getFilter }) {
     const [cat_toggler, setCat_toggler] = useState(false)
 
 
@@ -35,7 +35,7 @@ function Navigation({searchHandler}) {
             </form>
           </div>
         </div>
-        {cat_toggler===true?<Categories />:""}
+        {cat_toggler===true?<Categories getFilter={getFilter} />:""}
         </div>
       </ClickAwayListener>
     </div>

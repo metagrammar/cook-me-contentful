@@ -8,11 +8,11 @@ const client = contentful.createClient({
   accessToken: process.env.REACT_APP_SECRET_SAUCE_DELIVERY_API_TOKEN
 })
 
-function Category() {
+function Category({ getFilter }) {
 const [catData, setCatData] = useState()
 const [mainCatData, setMainCatData] = useState()
 
-const [checkboxState, setCheckboxState] = useState(false)
+// const [checkboxFilter, setCheckboxFilter] = useState([])
 
 useEffect(()=>{
         client.getEntries({
@@ -26,18 +26,27 @@ useEffect(()=>{
         .catch(console.error)
       },[])
 
+const handleCheckboxFilter = (e) => {
+  let tempData = []
+    for(let i = 0; i < e.currentTarget.length; i++)
 
-const handleClick = (e) => {
-      console.log(e.currentTarget)
-      e.currentTarget.checked!=="checked"? e.currentTarget.checked="checked":e.currentTarget.checked=""
-}
+    { if(e.currentTarget[i].checked) {
+      // console.log(e.currentTarget[i].name)
+      tempData.push(e.currentTarget[i].name)
+      // console.log(checkboxFilterInfo)
+    }
+  }
+  getFilter(tempData)
+  }
+
+
 
     return (
-      <div className='category'>
-      <form onSubmit={(e)=>console.log(e.target)}>
+      <>
+      <form className='category' onChange={(e) => handleCheckboxFilter(e)}>
         {mainCatData !== undefined?
           mainCatData.map(mainCat => 
-          <div>
+          <div className='category-item'>
             <h3>{mainCat.fields.title}</h3>
             
             {catData !== undefined?catData.map(cat => {
@@ -45,7 +54,9 @@ const handleClick = (e) => {
                   return(
                     <label class='container'>
                       {cat.fields.categoryTitle}
-                      <input type="checkbox"
+                      <input 
+                        name={cat.fields.categoryTitle} 
+                        type="checkbox" 
                       />
                       <span class="checkmark"></span>
                     </label>
@@ -55,7 +66,8 @@ const handleClick = (e) => {
           </div>
           ):""}
         </form>
-      </div>
+        
+      </>
       );}
   
   export default Category;
