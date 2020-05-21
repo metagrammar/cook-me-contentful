@@ -17,14 +17,10 @@ function App() {
   const [searchToggle, setSearchToggle] = useState(0)
   const [search, setSearch] = useState()
   const [recipes, setRecipes] = useState()
+  const [initial, setInitial] = useState()
   const [categories, setCategories] = useState()
-  const [catFilter, setCatFilter] = useState()
-
-  
-const filterHandler = (filter) => {
-  setCatFilter(filter)
-}
-  
+  const [catFilter, setCatFilter] = useState([])
+  const [firstRun, setFirstRun] = useState(true);
 
 
 //HELPER FUNCTIONS
@@ -33,13 +29,32 @@ const filterHandler = (filter) => {
     setSearch(searchquery)
     }
 
+      
+  const filterHandler = (filter) => {
+    setCatFilter(filter);
+    setRecipes(initial.filter(x => catFilter.every(y => 
+      {return x.fields.categories.some(z => 
+          z.fields.categoryTitle === y)
+          })
+      ))
+  }
+
+  const resetFilter = () => {
+    setCatFilter([])
+  }
+
 
   useEffect( () => {
     client.getEntries({
       content_type: 'categories'})
     .then(response => setCategories(response.items))
     .catch(console.error)
-
+  
+    client.getEntries({
+      content_type: 'recipe'})
+    .then(response => setInitial(response.items))
+    .catch(console.error)
+  
     if (searchToggle === 0){
     client.getEntries({
       content_type: 'recipe'})
@@ -53,15 +68,23 @@ const filterHandler = (filter) => {
     .then((response) => setRecipes(response.items))
     .catch(console.error)
     }
+    
   },[search, searchToggle])
   
+
+  useEffect(() => {
+    if (!firstRun) {
+      setRecipes(initial.filter(x => catFilter.every(y => x.fields.categories.some(z => z.fields.categoryTitle === y))))
+    } else setFirstRun(false)
+  }, [catFilter]);
+
   return (
     <div>
       <Navigation onSearch={searchHandler} getFilter={filterHandler}/>
-      {!recipes? '': 
+      {!recipes?'': 
       <Switch>
-        <Route path='/:recipe/' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
-        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} searchToggle={searchToggle} search={search} {...props} />} />
+        <Route path='/:recipe' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
+        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} searchToggle={searchToggle} search={search} filters={catFilter} resetFilter={resetFilter} {...props} />} />
       </Switch>
       }
     </div>

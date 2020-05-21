@@ -2,17 +2,16 @@ import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import Carousel from 'react-material-ui-carousel'
 import CardMedia from '@material-ui/core/CardMedia';
-// import {Paper} from '@material-ui/core'
 import './highlight.css';
 
 
 
 function Highlight({ gotRecipes }) {
 
-    const history = useHistory();
+  const history = useHistory();
 
   
-    return (
+   return (
       <>  
         <div className="highlight">
             <Carousel autoPlay={true} indicators={false} interval={4500} timeout={500}>
@@ -38,6 +37,7 @@ function Highlight({ gotRecipes }) {
                             </div>  
                         </Link>
                         )}
+                        return (console.log("api not responded yet"))
                         }
                       )}                 
             </Carousel>

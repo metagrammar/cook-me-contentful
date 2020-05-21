@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './category.css';
 
+
+
+
 const contentful = require('contentful')
 const client = contentful.createClient({
   space: 'on7xb2olivy7',
@@ -9,12 +12,12 @@ const client = contentful.createClient({
 })
 
 function Category({ getFilter }) {
-const [catData, setCatData] = useState()
-const [mainCatData, setMainCatData] = useState()
 
-// const [checkboxFilter, setCheckboxFilter] = useState([])
+  const [catData, setCatData] = useState()
+  const [mainCatData, setMainCatData] = useState()
 
-useEffect(()=>{
+
+  useEffect(()=>{ 
         client.getEntries({
           content_type: 'mainCategory'})
         .then((response) => setMainCatData(response.items))
@@ -26,20 +29,16 @@ useEffect(()=>{
         .catch(console.error)
       },[])
 
-const handleCheckboxFilter = (e) => {
-  let tempData = []
-    for(let i = 0; i < e.currentTarget.length; i++)
+  const handleCheckboxFilter = (e) => {
+      let tempData = []
+      for(let i = 0; i < e.currentTarget.length; i++)
 
-    { if(e.currentTarget[i].checked) {
-      // console.log(e.currentTarget[i].name)
-      tempData.push(e.currentTarget[i].name)
-      // console.log(checkboxFilterInfo)
+      { if(e.currentTarget[i].checked) {
+          tempData.push(e.currentTarget[i].name)
+        }
+      }
+      getFilter(tempData)
     }
-  }
-  getFilter(tempData)
-  }
-
-
 
     return (
       <>
@@ -61,7 +60,7 @@ const handleCheckboxFilter = (e) => {
                       <span class="checkmark"></span>
                     </label>
                   )
-                }
+                } return (null)
               }):""} 
           </div>
           ):""}
