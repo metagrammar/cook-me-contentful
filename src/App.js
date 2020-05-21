@@ -3,13 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import Home from './Home'
 import Navigation from './components/navigation'
 import RecipePage from './RecipePage'
-/* import Highlight from './components/highlight'
-import ResultsMain from './components/ResultsMain';
-import ResultsMore from './components/ResultsMore';
-import Footer from './components/Footer'; */
-
-//dotenv.config()
-
 
 // API SETUP INFORMATION
 const contentful = require('contentful')
@@ -21,37 +14,39 @@ const client = contentful.createClient({
 
 
 function App() {
-  // const [searchToggle, setSearchToggle] = useState(0)
-  // const [searchQuerry, setSearchQuerry] = useState()
+  const [searchToggle, setSearchToggle] = useState(0)
+  const [search, setSearch] = useState()
   const [recipes, setRecipes] = useState()
   const [categories, setCategories] = useState()
+  const [catFilter, setCatFilter] = useState(["Vegan","Starter"])
 
 //HELPER FUNCTIONS
-  const searchHandler = (e) => {
-        e.preventDefault()
-        console.log("search triggered")
-        client.getEntries({
-          'query': `${e.currentTarget[0].value}`})
-        .then((response) => console.log(response))
-        .catch(console.error)
-      }
-  
+  const searchHandler = (searchquery) => {
+    setSearchToggle(1)
+    setSearch(searchquery)
+    }
 
-  
 
   useEffect( () => {
     client.getEntries({
-      content_type: 'recipe',
-    })
-    .then(response => setRecipes(response.items))
-    .catch(console.error)
-
-    client.getEntries({
-      content_type: 'categories',
-    })
+      content_type: 'categories'})
     .then(response => setCategories(response.items))
     .catch(console.error)
-  },[])
+
+    if (searchToggle === 0){
+    client.getEntries({
+      content_type: 'recipe'})
+    .then(response => setRecipes(response.items))
+    .catch(console.error)
+    }
+    else {
+    client.getEntries({
+      content_type: 'recipe',
+      'query': `${search}`})
+    .then((response) => setRecipes(response.items))
+    .catch(console.error)
+    }
+  },[search, searchToggle])
   
   return (
     <div>
@@ -59,7 +54,7 @@ function App() {
       {!recipes? '': 
       <Switch>
         <Route path='/:recipe/' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
-        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} {...props} />} />
+        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} searchToggle={searchToggle} search={search} {...props} />} />
       </Switch>
       }
     </div>
