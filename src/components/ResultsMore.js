@@ -6,7 +6,7 @@ import './ResultsMore.css';
 const ResultsMore = ({gotRecipes}) => {
 
     const history = useHistory();
-    let i=0;
+    //let i=0;
     return (
         <>
         <div className='results-cards-more'>
