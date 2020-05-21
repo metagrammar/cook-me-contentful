@@ -19,7 +19,7 @@ function App() {
   const [recipes, setRecipes] = useState()
   const [initial, setInitial] = useState()
   const [categories, setCategories] = useState()
-  const [catFilter, setCatFilter] = useState()
+  const [catFilter, setCatFilter] = useState([])
   const [firstRun, setFirstRun] = useState(true);
 
 
@@ -31,12 +31,16 @@ function App() {
 
       
   const filterHandler = (filter) => {
-    setCatFilter(filter)
-    
-    setRecipes(initial.filter(x => catFilter.every(y => {
-      return x.fields.categories.some(z => z.fields.categoryTitle === y
-      )
-    })))
+    setCatFilter(filter);
+    setRecipes(initial.filter(x => catFilter.every(y => 
+      {return x.fields.categories.some(z => 
+          z.fields.categoryTitle === y)
+          })
+      ))
+  }
+
+  const resetFilter = () => {
+    setCatFilter([])
   }
 
 
@@ -80,7 +84,7 @@ function App() {
       {!recipes?'': 
       <Switch>
         <Route path='/:recipe' render={props => <RecipePage gotRecipes={recipes} {...props} />} />
-        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} searchToggle={searchToggle} search={search} {...props} />} />
+        <Route exact path='/' render={props => <Home gotRecipes={recipes} gotCategories={categories} searchToggle={searchToggle} search={search} filters={catFilter} resetFilter={resetFilter} {...props} />} />
       </Switch>
       }
     </div>
