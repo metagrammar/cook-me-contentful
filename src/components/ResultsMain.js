@@ -12,6 +12,11 @@ const ResultsMain = (props) => {
         <>
         <div className='results-cards'>
             <h1 className='main-results'>{props.searchToggle===1?`Search: ${props.search}`:"Latest Recipes"}</h1>
+            {props.filters.length>0?
+            <div className="matches">
+                <h2 className='main-results'>{`Filtered by ${props.filters} with ${props.gotRecipes.length} match(es)...`}</h2>
+                <button onClick={()=>props.resetFilter()}>Reset Filter</button>
+            </div>:null}
             <div className='cards-wrap'>
                 {props.gotRecipes.map(recipe =>  
                     recipe.sys.contentType.sys.id === 'recipe'? 

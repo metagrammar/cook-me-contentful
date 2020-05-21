@@ -58,3 +58,18 @@ h1.main-results, h2.main-results {
     max-height:300px;
     overflow:hidden;
 }
+
+.matches {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.matches button {
+    cursor: pointer;
+    color: black;
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+
+}
