@@ -60,7 +60,7 @@ function Category({ getFilter }) {
                       <span class="checkmark"></span>
                     </label>
                   )
-                } return (console.log("no data yet"))
+                } return (null)
               }):""} 
           </div>
           ):""}
