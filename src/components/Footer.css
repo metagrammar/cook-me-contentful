@@ -8,17 +8,14 @@
 .footer-center {
     grid-column: 2 / 3 ;
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 1fr minmax(50px, 150px);
     margin: 0 auto;
     max-width:1140px;
-    height:300px;
-    
 }
 
 .about{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    min-height:250px;
     align-items: start;
     color: #ffffff;
     font-weight: 300;
@@ -34,7 +31,8 @@
 }
 
 .follow, .contact, .news {
-    padding: 2em 2em 0;
+    padding: 2em 1em;
+    /* min-height: fit-content; */
 
 }
 
@@ -42,25 +40,51 @@
     font-size: 1.25rem;
 }
 
-.contact {
-    padding: 2em 1em 0;
-}
-
-.news{
-    padding: 2em 1em 0;
-}
 
 .terms-condition {
+    padding-top: 2em;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    height:50px;
 }
 
 .terms-condition button {
     color: #ffffff;
     font-weight: 400;
-    margin: auto 2rem;
+    margin: 0 2em 0.5em 2em;
     background: transparent;
     border:0;
     outline: none;
+}
+ /* Newsletter input field for e-mail */
+
+.newsletter-input, .newsletter-button {
+    border: 1px solid #ccc;
+    padding-left:0.5em;
+    font-weight: 300;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.newsletter-input {
+    height: 35px;
+    padding-left:0.5em;
+    width:180px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.email-input input::placeholder {
+    color: #999;
+}
+
+.newsletter-button {
+    height: 39px;
+    background-color: #ccc;
+    padding: 0 0.55em;
+    cursor: pointer;
+    color: #fff;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
